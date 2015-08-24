@@ -1,0 +1,17 @@
+{
+    "name": "lancerhe/php-http",
+    "description": "php library http.",
+    "authors": [
+        {
+            "name": "Lancer He",
+            "email": "lancer.he@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "Http": "src"
+        }
+    }
+}
