@@ -30,7 +30,7 @@ $ php composer.phar install
 Usage
 -----
 
-### Build http request
+#### Build http request
 
 ``` php
 <?php
@@ -48,7 +48,7 @@ Result:
 string(24) "{"count":0,"goon":false}"
 ```
 
-Use simple crypt decorator:
+#### Build http request with simple crypt decorator:
 
 ``` php
 <?php
@@ -71,7 +71,7 @@ array(2) {
 }
 ```
 
-Use logger decorator:
+#### Build http request with logger decorator:
 
 ``` php
 <?php
@@ -104,4 +104,7 @@ Content-Type: application/x-www-form-urlencoded
 Testing
 -------
 
-Just run `phpunit` (PHPUnit is required)
+Just run `phpunit`
+```
+phpunit -c phpunit.xml
+```
