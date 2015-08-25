@@ -30,25 +30,23 @@ $ php composer.phar install
 Usage
 -----
 
-#### Build http request
+#### Http Request
+
+Build a http request.
 
 ``` php
 <?php
-
 require('./vendor/autoload.php');
 
 $HttpRequest = new \Http\Request\Curl();
 $HttpRequest->sendRequest("https://www.processon.com/notification/count", array('id' => 12));
 var_dump( $HttpRequest->parseResponse() ); 
+
+// result
+// string(24) "{"count":0,"goon":false}"
 ```
 
-Result:
-
-```
-string(24) "{"count":0,"goon":false}"
-```
-
-#### Build http request with simple crypt decorator:
+Build a http request with simple crypt decorator.
 
 ``` php
 <?php
@@ -58,20 +56,17 @@ $HttpRequest = new \Http\Request\Curl();
 $HttpRequest = new \Http\Request\Decorator\SimpleCrypt($HttpRequest);
 $HttpRequest->sendRequest("https://www.processon.com/notification/count", array('id' => 12));
 var_dump( $HttpRequest->parseResponse() ); 
+
+// result
+// array(2) {
+//   'count' =>
+//   int(0)
+//   'goon' =>
+//   bool(false)
+// }
 ```
 
-Result:
-
-```
-array(2) {
-  'count' =>
-  int(0)
-  'goon' =>
-  bool(false)
-}
-```
-
-#### Build http request with logger decorator:
+Build a http request with file logger decorator.
 
 ``` php
 <?php
@@ -101,8 +96,9 @@ Content-Type: application/x-www-form-urlencoded
 [response_body]      => {"count":0,"goon":false}
 ```
 
+#### Http Parse
 
-#### Build http parse
+Build a http parse.
 
 ``` php
 <?php
@@ -111,25 +107,18 @@ require('./vendor/autoload.php');
 $HttpParse = new \Http\Parse\Sample("header=user&name=lancer");
 $HttpParse->parse();
 var_dump( $HttpParse->parse() ); 
+// result
+// string(23) "header=user&name=lancer"
 ```
 
-Result:
-
-```
-"header=user&name=lancer"
-```
-
-#### Build http parse with simple crypt
+Build a http parse with simple crypt
 
 ``` php
 $HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
 $HttpParse = new \Http\Parse\Decorator\SimpleCrypt($HttpParse);
 $HttpParse->parse();
 var_dump( $HttpParse->parse() );
-
-Result:
-
-``` php
+// result
 // array(2) {
 //   'user' =>
 //   string(6) "Lancer"
@@ -138,7 +127,7 @@ Result:
 // } 
 ```
 
-#### Build http parse with logger
+Build a http parse with file logger decorator.
 
 ``` php
 $HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
@@ -148,18 +137,18 @@ $HttpParse->parse();
 var_dump( $HttpParse->parse() );
 ```
 
-result:
+See log on /tmp/httpparse.log
 
 ```
-// array (
-//   'datetime' => '2015-08-25 18:05:38',
-//   'origin' => 'user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf',
-//   'decode' => 
-//   array (
-//     'user' => 'Lancer',
-//     'age' => '28',
-//   ),
-// )
+array (
+  'datetime' => '2015-08-25 18:05:38',
+  'origin' => 'user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf',
+  'decode' => 
+  array (
+    'user' => 'Lancer',
+    'age' => '28',
+  ),
+)
 ```
 
 Testing
