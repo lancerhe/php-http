@@ -1,6 +1,6 @@
 {
     "name": "lancerhe/php-http",
-    "description": "php library http.",
+    "description": "Http request and parse decorator (Easy to expand).",
     "authors": [
         {
             "name": "Lancer He",
@@ -8,7 +8,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "PHP": ">=5.4.0"
+    },
     "autoload": {
         "psr-0": {
             "Http": "src"
