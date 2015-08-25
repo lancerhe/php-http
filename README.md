@@ -101,6 +101,67 @@ Content-Type: application/x-www-form-urlencoded
 [response_body]      => {"count":0,"goon":false}
 ```
 
+
+#### Build http parse
+
+``` php
+<?php
+require('./vendor/autoload.php');
+
+$HttpParse = new \Http\Parse\Sample("header=user&name=lancer");
+$HttpParse->parse();
+var_dump( $HttpParse->parse() ); 
+```
+
+Result:
+
+```
+"header=user&name=lancer"
+```
+
+#### Build http parse with simple crypt
+
+``` php
+$HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
+$HttpParse = new \Http\Parse\Decorator\SimpleCrypt($HttpParse);
+$HttpParse->parse();
+var_dump( $HttpParse->parse() );
+
+Result:
+
+``` php
+// array(2) {
+//   'user' =>
+//   string(6) "Lancer"
+//   'age' =>
+//   string(2) "28"
+// } 
+```
+
+#### Build http parse with logger
+
+``` php
+$HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
+$HttpParse = new \Http\Parse\Decorator\SimpleCrypt($HttpParse);
+$HttpParse = new \Http\Parse\Decorator\LoggerFile($HttpParse);
+$HttpParse->parse();
+var_dump( $HttpParse->parse() );
+```
+
+result:
+
+```
+// array (
+//   'datetime' => '2015-08-25 18:05:38',
+//   'origin' => 'user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf',
+//   'decode' => 
+//   array (
+//     'user' => 'Lancer',
+//     'age' => '28',
+//   ),
+// )
+```
+
 Testing
 -------
 

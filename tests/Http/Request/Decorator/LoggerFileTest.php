@@ -21,7 +21,6 @@ class LoggerFileTest extends \PHPUnit_Framework_TestCase {
             ->method('executeRequest')
             ->will($this->returnValue('{"a":1}'));
 
-        $http_request = new Curl();
         $http_request = new LoggerFile($stub_http_curl);
         $http_request->setOutputFile("/tmp/phpunit.log");
         $http_request->sendRequest("http://127.0.0.1", array("log" => "mywrite."));

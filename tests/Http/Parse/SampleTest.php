@@ -15,8 +15,9 @@ class SampleTest extends \PHPUnit_Framework_TestCase {
      * @test
      */
     public function parse() {
-        $http_parse = new Sample("header=user&name=lancer");
-        $request = $http_parse->parse();
-        $this->assertEquals("header=user&name=lancer", $request);
+        $request    = "header=user&name=lancer";
+        $http_parse = new Sample($request);
+        $parse      = $http_parse->parse();
+        $this->assertEquals("header=user&name=lancer", $parse);
     }
 }

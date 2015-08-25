@@ -11,7 +11,5 @@ abstract class ParseAbstract {
 
     abstract public function parse();
 
-    abstract public function setParse($parse);
-
     abstract public function getRequest();
 }

@@ -14,15 +14,14 @@ class SimpleCrypt extends Decorator {
     protected $_crypt_key    = '2S23ED';
 
     public function parse() {
-        $request = $this->getRequest();
+        $request = parent::parse();
         parse_str($request, $post);
         $sign = $post['sign'];
         unset($post['sign']);
 
         if ( $sign !== md5(json_encode($post) . $this->_crypt_key) ) {
-            throw new \Exception("Error Processing Request", 1);
+            throw new \Exception();
         }
-        $this->setParse($post);
-        return parent::parse();
+        return $post;
     }
 }

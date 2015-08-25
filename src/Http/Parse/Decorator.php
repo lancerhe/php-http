@@ -15,10 +15,6 @@ abstract class Decorator extends ParseAbstract {
         $this->_http_parse = $parse;
     }
 
-    public function setParse($parse) {
-        $this->_http_parse->setParse($parse);
-    }
-
     public function parse() {
         return $this->_http_parse->parse();
     }
