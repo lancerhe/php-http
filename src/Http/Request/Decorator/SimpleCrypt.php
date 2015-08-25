@@ -23,9 +23,8 @@ class SimpleCrypt extends Decorator {
     }
 
     public function parseResponse() {
-        $response = $this->getResponse();
+        $response = parent::parseResponse();
         $response = json_decode($response, true);
-        $this->setResponse( $response );
-        return parent::parseResponse();
+        return $response;
     }
 }

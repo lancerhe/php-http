@@ -7,6 +7,8 @@
 
 namespace Http\Request;
 
+use Http\Request\RequestAbstract;
+
 abstract class Decorator extends RequestAbstract {
 
     /**
@@ -19,6 +21,14 @@ abstract class Decorator extends RequestAbstract {
      */
     public function __construct (RequestAbstract $http_request) {
         $this->_http_request = $http_request;
+    }
+
+
+    /**
+     * 装饰类方法不存在时，使用被装饰类方法
+     */
+    public function __call($func, $params = null) {
+        return call_user_func_array( array($this->_http_request, $func), $params);
     }
 
 
@@ -41,29 +51,11 @@ abstract class Decorator extends RequestAbstract {
 
 
     /**
-     * 设置response信息
-     * @param mixed $response
-     */
-    public function setResponse($response) {
-        $this->_http_request->setResponse($response);
-    }
-
-
-    /**
      * 获取request信息
      * @return mixed
      */
     public function getRequest() {
         return $this->_http_request->getRequest();
-    }
-
-
-    /**
-     * 设置request信息
-     * @param mixed $request
-     */
-    public function setRequest($request) {
-        $this->_http_request->setRequest($request);
     }
 
 
@@ -74,6 +66,8 @@ abstract class Decorator extends RequestAbstract {
      * @return void
      */
     public function sendRequest($url = null, $post = null) {
+        $this->url = $url;
+        $this->post = $post;
         return $this->_http_request->sendRequest($url, $post);
     }
 

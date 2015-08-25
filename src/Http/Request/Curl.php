@@ -7,6 +7,8 @@
 
 namespace Http\Request;
 
+use Http\Request\RequestAbstract;
+
 class Curl extends RequestAbstract {
 
     /**
@@ -55,29 +57,11 @@ class Curl extends RequestAbstract {
 
 
     /**
-     * 设置response信息
-     * @param mixed $response
-     */
-    public function setResponse($response) {
-        $this->_response = $response;
-    }
-
-
-    /**
      * 获取request信息
      * @return mixed
      */
     public function getRequest() {
         return $this->_request;
-    }
-
-
-    /**
-     * 设置request信息
-     * @param mixed $request
-     */
-    public function setRequest($request) {
-        $this->_request = $request;
     }
 
 
@@ -105,10 +89,8 @@ class Curl extends RequestAbstract {
         $this->_response = $this->executeRequest();
     }
 
-
     /**
-     * 执行请求
-     * @return string
+     * 执行 Curl 请求
      */
     public function executeRequest() {
         return curl_exec( $this->_handler );

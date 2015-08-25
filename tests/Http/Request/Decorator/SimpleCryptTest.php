@@ -7,7 +7,6 @@
 
 namespace Http\Test\Request\Decorator;
 
-use Http\Request\Curl;
 use Http\Request\Decorator\SimpleCrypt;
 
 class SimpleCryptTest extends \PHPUnit_Framework_TestCase {
@@ -15,7 +14,7 @@ class SimpleCryptTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function sendRequest() {
+    public function send_mock_request_url_and_post() {
         $stub_http_curl = $this->getMock('\Http\Request\Curl', array('executeRequest'));
         $stub_http_curl->expects($this->any())
             ->method('executeRequest')
@@ -31,7 +30,7 @@ class SimpleCryptTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function parseResponse($url = null, $post = null) {
+    public function parse_response_from_json_to_array($url = null, $post = null) {
         $stub_http_curl = $this->getMock('\Http\Request\Curl', array('executeRequest'));
         $stub_http_curl->expects($this->any())
             ->method('executeRequest')

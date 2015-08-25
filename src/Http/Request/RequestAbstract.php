@@ -23,24 +23,11 @@ abstract class RequestAbstract {
 
 
     /**
-     * 设置response信息
-     * @return mixed
-     */
-    abstract public function setResponse($response);
-
-
-    /**
      * 获取request信息
      * @return mixed
      */
     abstract public function getRequest();
 
-
-    /**
-     * 设置request信息
-     * @param mixed $request
-     */
-    abstract public function setRequest($request);
 
     /**
      * 发送HTTP请求
