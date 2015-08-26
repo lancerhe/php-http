@@ -15,6 +15,13 @@ abstract class Decorator extends ParseAbstract {
         $this->_http_parse = $parse;
     }
 
+    /**
+     * 装饰类方法不存在时，使用被装饰类方法
+     */
+    public function __call($func, $params = null) {
+        return call_user_func_array( array($this->_http_parse, $func), $params);
+    }
+
     public function parse() {
         return $this->_http_parse->parse();
     }
