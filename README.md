@@ -1,6 +1,8 @@
 PHP Http
 ============
 
+[![Latest Stable Version](https://poser.pugx.org/lancerhe/php-http/v/stable)](https://packagist.org/packages/lancerhe/php-http) [![Total Downloads](https://poser.pugx.org/lancerhe/php-http/downloads)](https://packagist.org/packages/lancerhe/php-http) [![Latest Unstable Version](https://poser.pugx.org/lancerhe/php-http/v/unstable)](https://packagist.org/packages/lancerhe/php-http) [![License](https://poser.pugx.org/lancerhe/php-http/license)](https://packagist.org/packages/lancerhe/php-http)
+
 Http request and parse decorator (Easy to expand).
 
 Requirements
@@ -16,7 +18,7 @@ Create or modify your composer.json
 ``` json
 {
     "require": {
-        "lancerhe/php-http": "dev-master"
+        "lancerhe/php-crypt": "dev-master"
     }
 }
 ```
