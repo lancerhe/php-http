@@ -104,4 +104,11 @@ class Curl extends RequestAbstract {
     public function parseResponse() {
         return $this->_response;
     }
+
+    /**
+     * 析构
+     */
+    public function __destruct() {  
+        curl_close( $this->_handler );
+    }
 }
