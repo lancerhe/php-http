@@ -1,25 +1,23 @@
 <?php
+namespace LancerHe\Http\Tests\Parse\Decorator;
+
+use LancerHe\Http\Parse\Sample;
+use LancerHe\Http\Parse\Decorator\SimpleCrypt;
+
 /**
- * HTTP请求装饰类 简单加密请求 测试类
- * @author Lancer He <lancer.he@gmail.com>
- * @since  2014-10-25
+ * Class SimpleCryptTest
+ *
+ * @package LancerHe\Http\Tests\Parse\Decorator
+ * @author  Lancer He <lancer.he@gmail.com>
  */
-
-namespace Http\Tests\Parse\Decorator;
-
-use Http\Parse\Sample;
-use Http\Parse\Decorator\SimpleCrypt;
-
 class SimpleCryptTest extends \PHPUnit_Framework_TestCase {
-
     /**
      * @test
      */
     public function parse() {
         $http_parse = new Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
         $http_parse = new SimpleCrypt($http_parse);
-        $parse = $http_parse->parse();
-        
+        $parse      = $http_parse->parse();
         $this->assertEquals('Lancer', $parse['user']);
         $this->assertEquals('28', $parse['age']);
     }
@@ -27,10 +25,10 @@ class SimpleCryptTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function parseFailure() {
+    public function parse_failure() {
         $this->setExpectedException('Exception');
         $http_parse = new Sample("user=Lancer&age=28&sign=0edd1242c5ccea50701bb95c8f2d8cf");
         $http_parse = new SimpleCrypt($http_parse);
-        $parse = $http_parse->parse();
+        $http_parse->parse();
     }
 }

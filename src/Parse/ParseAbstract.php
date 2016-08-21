@@ -1,15 +1,20 @@
 <?php
+namespace LancerHe\Http\Parse;
+
 /**
- * http parse abstract class
- * @author Lancer He <lancer.he@gmail.com>
- * @since  2014-10-28
+ * Class ParseAbstract
+ *
+ * @package LancerHe\Http\Parse
+ * @author  Lancer He <lancer.he@gmail.com>
  */
-
-namespace Http\Parse;
-
 abstract class ParseAbstract {
-
+    /**
+     * @return mixed
+     */
     abstract public function parse();
 
+    /**
+     * @return mixed
+     */
     abstract public function getRequest();
 }

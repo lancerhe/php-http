@@ -18,7 +18,7 @@ Create or modify your composer.json
 ``` json
 {
     "require": {
-        "lancerhe/php-http": "dev-master"
+        "lancerhe/php-http": "1.1.0"
     }
 }
 ```
@@ -40,7 +40,7 @@ Build a http request.
 <?php
 require('./vendor/autoload.php');
 
-$HttpRequest = new \Http\Request\Curl();
+$HttpRequest = new \LancerHe\Http\Request\Curl();
 $HttpRequest->sendRequest("https://www.processon.com/notification/count", array('id' => 12));
 var_dump( $HttpRequest->parseResponse() ); 
 
@@ -54,8 +54,8 @@ Build a http request with simple crypt decorator.
 <?php
 require('./vendor/autoload.php');
 
-$HttpRequest = new \Http\Request\Curl();
-$HttpRequest = new \Http\Request\Decorator\SimpleCrypt($HttpRequest);
+$HttpRequest = new \LancerHe\Http\Request\Curl();
+$HttpRequest = new \LancerHe\Http\Request\Decorator\SimpleCrypt($HttpRequest);
 $HttpRequest->sendRequest("https://www.processon.com/notification/count", array('id' => 12));
 var_dump( $HttpRequest->parseResponse() ); 
 
@@ -75,9 +75,9 @@ Build a http request with file logger decorator.
 
 include 'php-http/vendor/autoload.php';
 
-$HttpRequest = new \Http\Request\Curl();
-$HttpRequest = new \Http\Request\Decorator\SimpleCrypt($HttpRequest);
-$HttpRequest = new \Http\Request\Decorator\LoggerFile($HttpRequest);
+$HttpRequest = new \LancerHe\Http\Request\Curl();
+$HttpRequest = new \LancerHe\Http\Request\Decorator\SimpleCrypt($HttpRequest);
+$HttpRequest = new \LancerHe\Http\Request\Decorator\LoggerFile($HttpRequest);
 $HttpRequest->sendRequest("https://www.processon.com/notification/count", array('id' => 12));
 var_dump( $HttpRequest->parseResponse() );
 ```
@@ -106,7 +106,7 @@ Build a http parse.
 <?php
 require('./vendor/autoload.php');
 
-$HttpParse = new \Http\Parse\Sample("header=user&name=lancer");
+$HttpParse = new \LancerHe\Http\Parse\Sample("header=user&name=lancer");
 $HttpParse->parse();
 var_dump( $HttpParse->parse() ); 
 // result
@@ -116,8 +116,8 @@ var_dump( $HttpParse->parse() );
 Build a http parse with simple crypt
 
 ``` php
-$HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
-$HttpParse = new \Http\Parse\Decorator\SimpleCrypt($HttpParse);
+$HttpParse = new \LancerHe\Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
+$HttpParse = new \LancerHe\Http\Parse\Decorator\SimpleCrypt($HttpParse);
 $HttpParse->parse();
 var_dump( $HttpParse->parse() );
 // result
@@ -132,16 +132,16 @@ var_dump( $HttpParse->parse() );
 Build a http parse with file logger decorator.
 
 ``` php
-$HttpParse = new \Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
-$HttpParse = new \Http\Parse\Decorator\SimpleCrypt($HttpParse);
-$HttpParse = new \Http\Parse\Decorator\LoggerFile($HttpParse);
+$HttpParse = new \LancerHe\Http\Parse\Sample("user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf");
+$HttpParse = new \LancerHe\Http\Parse\Decorator\SimpleCrypt($HttpParse);
+$HttpParse = new \LancerHe\Http\Parse\Decorator\LoggerFile($HttpParse);
 $HttpParse->parse();
 var_dump( $HttpParse->parse() );
 ```
 
 See log on /tmp/httpparse.log
 
-```
+``` php
 array (
   'datetime' => '2015-08-25 18:05:38',
   'origin' => 'user=Lancer&age=28&sign=0edd12427c5ccea50701bb95c8f2d8cf',

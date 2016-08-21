@@ -1,16 +1,15 @@
 <?php
+namespace LancerHe\Http\Tests\Parse;
+
+use LancerHe\Http\Parse\Sample;
+
 /**
- * HTTP Parse Sapmle Testcase.
- * @author Lancer He <lancer.he@gmail.com>
- * @since  2014-10-28
+ * Class SampleTest
+ *
+ * @package LancerHe\Http\Tests\Parse
+ * @author  Lancer He <lancer.he@gmail.com>
  */
-
-namespace Http\Tests\Parse;
-
-use Http\Parse\Sample;
-
 class SampleTest extends \PHPUnit_Framework_TestCase {
-
     /**
      * @test
      */

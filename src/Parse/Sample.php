@@ -1,26 +1,37 @@
 <?php
+namespace LancerHe\Http\Parse;
+
 /**
- * http parse class
- * @author Lancer He <lancer.he@gmail.com>
- * @since  2014-10-28
+ * Class Sample
+ *
+ * @package LancerHe\Http\Parse
+ * @author  Lancer He <lancer.he@gmail.com>
  */
-
-namespace Http\Parse;
-
-use Http\Parse\ParseAbstract;
-
 class Sample extends ParseAbstract {
+    /**
+     * @var mixed
+     */
+    protected $_request;
 
-    protected $_request = null;
-
+    /**
+     * Sample constructor.
+     *
+     * @param $request
+     */
     public function __construct($request) {
         $this->_request = $request;
     }
 
+    /**
+     * @return mixed
+     */
     public function parse() {
         return $this->_request;
     }
 
+    /**
+     * @return mixed
+     */
     public function getRequest() {
         return $this->_request;
     }

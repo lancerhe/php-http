@@ -9,7 +9,7 @@
             "role" : "Engineer"
         }
     ],
-    "minimum-stability" : "dev",
+    "minimum-stability" : "stable",
     "require-dev" : {
         "phpunit/phpunit" : "3.7.*"
     },
@@ -18,12 +18,12 @@
     },
     "autoload" : {
         "psr-4" : {
-            "Http\\" : "src/"
+            "LancerHe\\Http\\" : "src/"
         }
     },
     "autoload-dev" : {
         "psr-4" : {
-            "Http\\Test\\" : "tests/"
+            "LancerHe\\Http\\Test\\" : "tests/"
         }
     }
 }
